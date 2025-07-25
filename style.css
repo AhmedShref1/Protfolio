@@ -1,0 +1,530 @@
+body{
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  background: #0f0f0f !important;
+  color: white;
+  overflow-x: hidden;
+}
+
+/*=====Navbar=====*/
+.custom-navbar{
+  background: rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #00eaff30;
+  transition: background 0.4s ease;
+}
+.navbar .nav-link{
+  font-weight: 500;
+  color: white !important;
+  position: relative;
+  transition: color 0.3s ease;
+}
+.navbar .nav-link::after{
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #00eaff;
+  transition: width 0.3s ease;
+}
+.navbar .nav-link:hover::after{
+  width: 100%;
+}
+.navbar .nav-link:hover{
+  color: #00eaff !important;
+}
+.navbar-brand{
+  font-size: 1.7rem;
+  letter-spacing: 1px;
+}
+.navbar-brand:not(.glow-cv){
+  color: #00eaff !important;
+}
+.glow-cv{
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 0 5px rgba(255, 193, 7, 0.4);
+}
+.glow-cv:hover{
+  box-shadow: 0 0 15px rgba(255, 193, 7, 0.9);
+  transform: scale(1.05);
+  background-color: rgba(255, 193, 7, 0.15);
+}
+
+/*=====Animations=====*/
+.scroll-animate{
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease-out;
+}
+.scroll-animate.show{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.rotating-section::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 500px;
+  background: rgba(80, 81, 160, 0.07);
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+.rotating-section .rotating-symbol{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 350px;
+  font-weight: bold;
+  color: rgba(75, 76, 128, 0.9);
+  z-index: 0;
+  pointer-events: none;
+  animation: rotateSymbol 20s linear infinite;
+}
+@keyframes rotateSymbol{
+  0%{
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100%{
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/*=====Hero Section=====*/
+.hero{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #101820;
+  padding: 60px 40px;
+  position: relative;
+  flex-wrap: wrap;
+}
+.intro-box{
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  padding: 70px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  width: fit-content;
+  max-width: 850px;
+  z-index: 1;
+}
+.intro-text{
+  font-size: 17px;
+  color: #00eaff;
+  white-space: pre-wrap;
+  border-left: 2px solid #00eaff;
+  padding-left: 10px;
+  animation: blink 1s step-start infinite;
+}
+@keyframes blink{
+  50%{
+    border-color: transparent;
+  }
+}
+/*Animation for rubber-band Drop Effect*/
+.rubber-drop{
+  animation: rubberDrop 1.8s ease-out forwards;
+}
+/*Define Keyframes*/
+@keyframes rubberDrop{
+  0%{
+    transform: translateY(-400px) scaleY(1.4);
+  }
+  30%{
+    transform: translateY(0px) scaleY(0.8);
+  }
+  50%{
+    transform: translateY(-25px) scaleY(1.2);
+  }
+  65%{
+    transform: translateY(15px) scaleY(0.9);
+  }
+  75%{
+    transform: translateY(-10px) scaleY(1.1);
+  }
+  85%{
+    transform: translateY(5px) scaleY(0.95);
+  }
+  100%{
+    transform: translateY(0px) scaleY(1); /*يستقر*/
+  }
+}
+.intro-container{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 50px;
+  position: absolute;
+  top: 60px;
+  right: 40px;
+  z-index: 2;
+  margin-top: 50px;
+}
+.intro-rope{
+  position: absolute;
+  top: -190px;
+  height: 190px;
+  width: 6px;
+  background: linear-gradient(to bottom, #00ffff, #00baba);
+  border-radius: 3px;
+  z-index: 999;
+}
+.intro-rope::after{
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 10px;
+  background-color: #00ffff;
+  border-radius: 3px;
+  box-shadow: 0 0 8px #00ffff99;
+}
+.intro-card{
+  position: relative;
+  width: 270px;
+  background-color: #101820;
+  padding: 45px 10px 25px 10px;
+  border-radius: 20px;
+  border: 2px solid #00ffff;
+  text-align: center;
+  box-shadow: 0 0 20px #00ffff55;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center;
+}
+.intro-card p{
+  color: #1b9696;
+}
+.intro-image{
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 3px solid #00ffff;
+  margin-bottom: 10px;
+}
+.intro-name{
+  margin: 0;
+  font-size: 18px;
+  color: #00ffff;
+}
+.intro-card.show{
+  opacity: 1;
+  transform: translateY(0);
+}
+.swing{
+  animation: swing 2s linear infinite;
+}
+@keyframes swing{
+  0%  { transform: rotate(5deg); }
+  50% { transform: rotate(-5deg); }
+  100%{ transform: rotate(5deg); }
+}
+
+/*Section Scroll Animation*/
+section{
+  padding: 100px 0;
+  position: relative;
+  background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #1e1e2f);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  color: #fff;
+}
+@keyframes gradientMove{
+  0%{ background-position: 0% 50%; }
+  50%{ background-position: 100% 50%; }
+  100%{ background-position: 0% 50%; }
+}
+section h2{
+  color: #00fff7;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 60px;
+  text-shadow: 0 0 15px #00fff7;
+}
+
+/*=====Cards=====*/
+.Card{
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+  padding: 15px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 370px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.Card:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+}
+.Image{
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  border-radius: 12px;
+  background-color: black;
+}
+.CardContent{
+  flex-grow: 1;
+  padding: 20px;
+  color: #fff;
+  font-size: 15px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+.overlay{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #00eaff;
+  padding: 10px;
+  text-align: center;
+  color: #111;
+  font-weight: bold;
+  font-size: 16px;
+  z-index: 2;
+  border-radius: 0 0 20px 20px;
+  text-shadow: none;
+}
+.arrow{
+  color: #00eaff;
+  transition: transform 0.3s ease;
+}
+/*Special (Project) Cards*/
+.spechial{
+  height: 300px !important;
+  width: 300px !important;
+}
+.spechial .CardContent a{
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  margin-right: 15px;
+}
+.spechial .CardContent a:hover{
+  padding: 0 10px;
+  border-radius: 10px;
+  background-color: #1f838c;
+}
+.spechial .CardContent a:hover .arrow{
+  transform: translateX(5px);
+}
+
+/*=====Achievements=====*/
+.swiper{
+  margin-left: 30px !important;
+  margin-right: 30px !important;
+}
+.achieves{
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+  padding: 15px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.achieves img{
+  height: 300px !important;
+}
+.achieves .CardContent{
+  flex-grow: 1;
+  padding: 20px;
+  color: white;
+  font-size: 15px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.achieves .CardContent a{
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  margin-right: 15px;
+}
+.achieves .CardContent a:hover{
+  padding: 0 10px;
+  border-radius: 10px;
+  background-color: #1f838c;
+}
+.achieves .CardContent a:hover .arrow{
+  transform: translateX(5px);
+}
+
+/*=====Nav Buttons for Projects=====*/
+.project-nav.both-buttons{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0 0;
+}
+.custom-btn{
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  padding: 3px 20px;
+  font-weight: bold;
+  border-radius: 30px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.custom-btn:hover{
+  background-color: #138496;
+  transform: scale(1.05);
+}
+.custom-btn i{
+  margin: 0 5px;
+}
+
+/*=====Contact Section=====*/
+#contact{
+  padding: 50px 20px;
+  text-align: center;
+}
+.contact-form{
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+  font-family: 'Courier New', monospace;
+}
+.contact-form .form-row{
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.contact-form input,
+.contact-form textarea{
+  flex: 1 1 45%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #00eaff;
+  background-color: #0f0f0f;
+  color: white;
+  font-size: 16px;
+}
+.contact-form textarea{
+  width: 100%;
+  resize: vertical;
+  min-height: 100px;
+}
+.contact-form button.custom-btn{
+  margin-top: 10px;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to right, #00eaff, #0077ff);
+  color: black;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.contact-form button.custom-btn:hover{
+  background: linear-gradient(to right, #00bfff, #005eff);
+}
+
+/*=====Footer=====*/
+footer{
+  text-align: center;
+  padding: 20px;
+  background: #111;
+  color: #aaa;
+}
+
+
+
+
+@media (max-width: 770px){
+  .hero{
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 100px 20px 40px;
+  }
+  .intro-container{
+    position: relative;
+    top: -35px;
+    right: 0;
+    padding: 0;
+    margin-bottom: 30px;
+  }
+  .intro-box{
+    padding: 30px 20px;
+    text-align: center;
+  }
+  .intro-card{
+    margin-top: 20px;
+  }
+  .intro-rope{
+    top: -150px;
+    height: 150px;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev{
+    display: none !important;
+  }
+  .projects-slider-container{
+    overflow-x: auto !important;
+  }
+
+  .Card.spechial{
+    margin-left: auto;
+    width: 100% !important;
+    max-width: 350px !important;
+    margin-right: auto;
+  }
+
+}
+
+
+@media (min-width: 800px) and (max-width: 1500px){
+  .hero{
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 100px 20px 40px;
+  }
+  .intro-container{
+    position: relative;
+    top: -35px;
+    right: 0;
+    padding: 0;
+    margin-bottom: 30px;
+  }
+
+}
+
+
+
